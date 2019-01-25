@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -115,14 +116,14 @@ public class CopyFile extends BaseController {
 
             // 換版清單
             Map<String, Integer> map = getTxtMap();
-            _FileUtility.write(logFile, printTxnMap(map), true);
+            _FileUtility.write(logFile, printTxnMap(map), false);
 
             // Check list 清單是不是一對一
             List<FileVo> checkList = checkList(map);
             _FileUtility.write(logFile, printCheckList(map, checkList), true);
 
             // copy
-            if(isCopy) {
+            if (isCopy) {
                 _FileUtility.write(logFile, copyList(checkList, filePath), true);
             }
 
@@ -279,7 +280,7 @@ public class CopyFile extends BaseController {
         fileList.forEach(v -> {
             try {
                 String source = v.getPath() + v.getName();
-                Path path = _FileUtility.copy(source, source.replace(fromPath, filePath));
+                Path path = _FileUtility.copy(source, source.replace(fromPath, filePath), StandardCopyOption.REPLACE_EXISTING);
                 sb.append(String.format("%d.\t%s\\\t%s\r\n", count[0], path.getParent().toString().replace(filePath.substring(0, filePath.length() - 1), ""), path.getFileName()));
                 count[0]++;
             } catch (IOException e) {

@@ -7,7 +7,7 @@ import Utility.NumberUtility;
 import java.io.IOException;
 import java.util.*;
 
-public class findAll {
+public class FindAll {
     private static FileUtility _FileUtility = new FileUtility();
     private static String _Path_1 = "C:\\PSC\\BOT\\EBOT-UAT\\";
     private static String _Path_2 = "D:\\BOT\\IIS\\Bak\\EBOT-UAT_Release\\";
