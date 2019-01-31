@@ -1,4 +1,4 @@
-package Model;
+package Versioning.Model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +26,20 @@ public class ReasonForChangeModel {
     @Getter
     @Setter
     private String reason;
+
+    /**
+     * 線上問題單號
+     */
+    @Getter
+    @Setter
+    private String onlineNumber;
+
+    /**
+     * UAT 問題單
+     */
+    @Getter
+    @Setter
+    private String uatNumber;
 
     /**
      * 程式清單(String)

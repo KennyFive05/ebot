@@ -1,4 +1,4 @@
-package Model;
+package Versioning.Model;
 
 import lombok.Getter;
 import lombok.Setter;
